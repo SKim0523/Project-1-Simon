@@ -10,9 +10,8 @@ Simon Game is a browser based interactive  memory game.
 ## **User Stories**
 
 ### Game Start
-1. A user will click the "Start" button in the middle of the game board to start the game.
-2. Once the Start button is clicked, the four buttons of the game board  will  take color in order with an associated tone: (clockwise order) Red >> Blue >> Yellow >> Green
-3. Once the Start button is clicked, the window below the start button will display 0, which indicated the rounds played.
+1. A user will click the Start button in on top of the game board to start the game.
+2. Once the Start button is clicked, the window in the middle of the game board will display 0, which indicates the rounds played.
 
 ### Game Play
 1. The game board first lights one of the buttons and sounds a tone. (Button selection by the game board is random) A player is expected to repeat after the game board by clicking the same button.
@@ -29,3 +28,14 @@ Simon Game is a browser based interactive  memory game.
 1.  The player looses if he/she makes mistake in replicating the sequence or take more than 10 seconds to replicate the sequence.
 2. Upon making mistake, the game round display resets to 0 and the steps of the Game Play is repeated again.
 
+## **MVP Goals**
+- A user can see and hear game sequences expressed in four different colors and tones.
+- A user can use a mouse to click the buttons to replicate sequences.
+- A user will hear tones that are associated to colors as he/she clicks.
+- A user can see the game round and winning status information that gets updated according to the game play.
+
+
+## **Stretch Goals**
+- Once the Start button is clicked, the four buttons of the game board  will  take color in order with an associated tone: (clockwise order) Red >> Blue >> Yellow >> Green
+- A user can modify the speed of the sequence play.
+- A timer displays time elapse for a given round and resets when a new round starts.
