@@ -38,3 +38,72 @@
 // 	- Grab the element with querySelector
 // 	- Populate the innerHTML with winning or losing message depending on the result of the conditionals written for the sequence comparison
 // - remove evenListeners for divs (divs are no longer clickable) 
+
+//*-----Global variables--------*/
+// let gameboard = [];
+let playerArray = [];
+let computerArray = [];
+let gameActive = true;
+let computerPlaying = true;
+let winningMessage = `You win! What a great memory! Press Start button to play again.`
+let losingMessage = `You lose! Press Start button to play again.`
+
+//*-----Selectors--------*/
+let startButton = document.getElementById('start-button')
+let messageToPlayer = document.getElementById('game-status-message')
+let buttons = document.querySelectorAll('.button')
+let upperLeft = document.getElementById('upper-left')
+let upperRight = document.getElementById('upper-right')
+let lowerLeft = document.getElementById('lower-left')
+let lowerRight = document.getElementById('lower-right')
+let roundDisplay = document.getElementById('round-display')
+
+let round = roundDisplay.innerHTML;
+// console.log(round)
+
+//*-----Attaching eventListeners---------*/
+startButton.addEventListener ('click', gameStart);
+upperLeft.addEventListener ('click', flash);
+upperRight.addEventListener ('click', flash);
+lowerLeft.addEventListener ('click', flash);
+lowerRight.addEventListener ('click', flash);
+
+
+function gameStart() {
+    gameActive = true;
+    messageToPlayer.innerHTML= 'Have fun!';
+    computerSequence ()
+}
+
+function computerSequence() {
+    if (gameActive === true) {
+        let radomButton = buttons[Math.floor(Math.random() * 4)];
+        computerArray.push(radomButton);
+        for (i = 0; i < computerArray.length; i ++) {
+            if (i > 0)
+                computerArray[i]
+                .classList.remove("changeColor");
+            
+            
+                ???
+}
+
+function playerClicks (event) {
+    event.target.classList.add("changeColor");
+    setTimeout(function() {
+        event.target.classList.remove("changeColor");
+    }, 500);
+    playerArray.push(event.target);
+        console.log(test)
+    }
+
+function win() {
+    messageToPlayer.innerHTML= winningMessage
+}
+
+function lose() {
+    messageToPlayer.innerHTML= losingMessage
+    computerArray = [];
+    playerArray = [];
+    gameActive = false;
+}

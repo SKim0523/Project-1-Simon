@@ -10,6 +10,23 @@
 </head>
 <body>
     <h1>Simon Game</h1>
-    <button type="button">Start</button>
+    <div id="game-status">
+        <p id="game-status-message">Welcome! Please click Start button to play.</p>
+    </div>
+    <button type="button" id="start-button">Start</button>
+    <div id="outer-circle">
+        <div id = "upper-left" class="button"></div>
+        <div id = "upper-right" class="button"></div>
+        <div id = "lower-left" class="button"></div>
+        <div id = "lower-right" class="button"></div>
+            <div id = "inner-circle">
+            <p>Round</p>
+            <div id = "round-display">--</div>
+            </div>
+    </div>
+    <div id="instruction">
+        <h2>Instruction:</h2>
+        <p id="instruction-text">Replicate the sequence of signals that the game board produces. You win if you reach the 10th round by successfully replicating the game board's sequence that grows longer each round.</p>
+    </div>
 </body>
 </html>

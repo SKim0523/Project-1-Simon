@@ -1,3 +1,97 @@
+body {
+    text-align: center;
+}
+
 h1 {
     color:red;
+    font-size: 70px;
+}
+
+/*Creating circle https://www.w3schools.com/howto/howto_css_circles.asp*/
+#outer-circle {
+    height: 610px;
+    width: 610px;
+    border-style: solid;
+    border-width: 5px;
+    margin: 30px auto;
+    position: relative;
+}
+  
+#inner-circle {
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    border-style: solid;
+    border-width: 5px;
+    position: absolute;
+    margin-top: 225px;
+    margin-left: 225px
+}
+
+  #upper-left {
+    height: 300px;
+    width: 300px;
+    background-color: green;
+    border-style: solid;
+    border-width: 5px;
+    position: absolute;
+  }
+
+  #upper-right {
+    height: 300px;
+    width: 300px;
+    background-color: darkred;
+    border-style: solid;
+    border-width: 5px;
+    position: absolute;
+    margin-left: 300px;
+  }
+
+  #lower-left {
+    height: 300px;
+    width: 300px;
+    background-color: gold;
+    border-style: solid;
+    border-width: 5px;
+    position: absolute;
+    margin-top: 300px;
+  }
+
+  #lower-right {
+    height: 300px;
+    width: 300px;
+    background-color: darkblue;
+    border-style: solid;
+    border-width: 5px;
+    position: absolute;
+    margin-top: 300px;
+    margin-left: 300px
+  }
+
+  #round-display {
+    height: 70px;
+    width: 100px;
+    color: red;
+    font-size: 40px;
+    background-color: black;
+    margin-left: 25px;
+  }
+
+#game-status-message {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+  #instruction {
+    width: 800px;
+    margin: 30px auto;
+  }
+
+.button {
+    transition: filter 0.5s;
+    filter: brightness(100%);
+}
+
+.changeColor {
+    filter: brightness(250%);
 }
