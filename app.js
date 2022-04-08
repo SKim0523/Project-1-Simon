@@ -63,42 +63,49 @@ let round = roundDisplay.innerHTML;
 
 //*-----Attaching eventListeners---------*/
 startButton.addEventListener ('click', gameStart);
-upperLeft.addEventListener ('click', playerClicks);
-upperRight.addEventListener ('click', playerClicks);
-lowerLeft.addEventListener ('click', playerClicks);
-lowerRight.addEventListener ('click', playerClicks);
+upperLeft.addEventListener ('click', playerPlays);
+upperRight.addEventListener ('click', playerPlays);
+lowerLeft.addEventListener ('click', playerPlays);
+lowerRight.addEventListener ('click', playerPlays);
 
 
 function gameStart() {
     gameActive = true;
-    computerPlaying = true;
     messageToPlayer.innerHTML= 'Have fun!';
     computerPlays();
-    playerPlays();
 }
 
 function computerPlays() {
-    if (gameActive === true && computerPlaying === true) {
-        let radomButton = buttons[Math.floor(Math.random() * 4)];
-        computerArray.push(radomButton);        
-// 1 click of start is currently increating the array length by 1
-        let on = setInterval(blink, 500);
-        let i = 0
-        function blink() {
-            if (i > 0) {
-                computerArray[i - 1].classList.remove("changeColor");
-            }
-            if (i === computerArray.length) {
-                //if the iteration becomes same as the computerArray the blinking ends
-                clearInterval(on);
-                computerPlaying = false; // now it's the player's turn
-                }
-            computerArray[i].classList.add("changeColor")
-            i++
-        }  
-        computerPlaying === false;
-        playerPlays();
+    gameActive = true;
+    let radomButton = buttons[Math.floor(Math.random() * 4)];
+    computerArray.push(radomButton);        
+// 1 click of start is currently increasing the array length by 1
+    for (let i = 0; i <= computerArray.length; i++) {
+        computerArray[i].classList.add("changeColor")
+        setTimeout(function() {
+            computerArray[i].target.classList.remove("blink");
+        }, 500);
     }
+}
+
+    // let interval = setInterval(blink, 500);
+    // let i = 0
+    // function blink() {
+    //     if (i > 0) {
+    //         computerArray[i - 1].classList.remove("changeColor");
+    //     }
+    //     if (i === computerArray.length) {
+    //         //if the iteration becomes same as the computerArray the blinking ends
+    //         clearInterval(interval);
+    //         computerPlaying = false; // now it's the player's turn
+    //         playerPlays();
+    //         }
+    //     computerArray[i].classList.add("changeColor")
+    //     console.log(computerArray[i].classList)
+    //     i++
+    //     console.log(i)
+    //     }
+    // }
 
     // let on = setInterval(blink, 500);
     //     function blink() {
@@ -115,13 +122,9 @@ function computerPlays() {
     //         }
     //     }   
 
-    // }
-}
 
 function playerPlays (event) {
-    gameActive === true;
-    playrPlaying === true;
-   
+    console.log(event)
     //player clicks to make button change color 
     event.target.classList.add("changeColor");
     setTimeout(function() {
@@ -136,15 +139,15 @@ function playerPlays (event) {
         lose();
     } else if (playerArray.length === computerArray.length &&   playerArray.length !== 10) {
         computerPlays();
-    } else (playerArray.length === 10) {
+    } else if (playerArray.length === 10) {
         win();
     }
 }
 
+
 // function updateRound () {
 // This should go inside of the PlayerClicks function
 // }
-
 
 
 function win() {
