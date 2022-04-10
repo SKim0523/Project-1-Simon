@@ -44,22 +44,22 @@
 let playerArray = [];
 let computerArray = [];
 let gameActive = true;
-let computerPlaying = true;
-let winningMessage = `You win! What a great memory! Press Start button to play again.`;
-let losingMessage = `You lose! Press Start button to play again.`;
+let round = 0;
+let winningMessage = `You win! What a great memory! &#128525`;
+let continueMessage = `Great! Continue playing! &#128579;`
+let losingMessage = `Game over! &#128565; Please try again.`;
 
 //*-----Selectors--------*/
 let startButton = document.getElementById('start-button');
 let messageToPlayer = document.getElementById('game-status-message');
 let buttons = document.querySelectorAll('.button');
-let upperLeft = document.getElementById('upper-left');
-let upperRight = document.getElementById('upper-right');
-let lowerLeft = document.getElementById('lower-left');
-let lowerRight = document.getElementById('lower-right');
+let upperLeft = document.getElementById('0');
+let upperRight = document.getElementById('1');
+let lowerLeft = document.getElementById('2');
+let lowerRight = document.getElementById('3');
 let roundDisplay = document.getElementById('round-display');
+let randomIndex = Math.floor(Math.random() * 4);
 
-let round = roundDisplay.innerHTML;
-// console.log(round)
 
 //*-----Attaching eventListeners---------*/
 startButton.addEventListener ('click', gameStart);
@@ -70,83 +70,100 @@ lowerRight.addEventListener ('click', playerPlays);
 
 
 function gameStart() {
-    gameActive = true;
-    messageToPlayer.innerHTML= 'Have fun!';
-    computerPlays();
+    messageToPlayer.innerHTML= 'Have fun! &#x1F60E';
+    setTimeout(computerPlays, 2000)
+    // computerPlays();
+}
+
+function accumulateComputerArray(){
+    let nextComputerArray = [...computerArray].push(randomIndex);
+    return nextComputerArray;
 }
 
 function computerPlays() {
-    gameActive = true;
-    let radomButton = buttons[Math.floor(Math.random() * 4)];
-    computerArray.push(radomButton);        
-// 1 click of start is currently increasing the array length by 1
-    for (let i = 0; i <= computerArray.length; i++) {
-        computerArray[i].classList.add("changeColor")
+    let randomIndex = Math.floor(Math.random() * 4);
+    computerArray.push(randomIndex);
+    console.log(computerArray)
+    for (let i = 0; i < computerArray.length; i++) {
         setTimeout(function() {
-            computerArray[i].target.classList.remove("blink");
-        }, 500);
+            buttons[computerArray[i]].classList.add("changeColor")
+            setTimeout(function() {
+                buttons[computerArray[i]].classList.remove("changeColor");
+            }, 300);
+        }, 1000 * i);
+        roundDisplay.innerHTML=i+1
+        messageToPlayer.innerHTML = `Your turn! &#x1F609;`
     }
+    playerPlays(event);
 }
 
-    // let interval = setInterval(blink, 500);
-    // let i = 0
-    // function blink() {
-    //     if (i > 0) {
-    //         computerArray[i - 1].classList.remove("changeColor");
-    //     }
-    //     if (i === computerArray.length) {
-    //         //if the iteration becomes same as the computerArray the blinking ends
-    //         clearInterval(interval);
-    //         computerPlaying = false; // now it's the player's turn
-    //         playerPlays();
-    //         }
-    //     computerArray[i].classList.add("changeColor")
-    //     console.log(computerArray[i].classList)
-    //     i++
-    //     console.log(i)
-    //     }
-    // }
-
-    // let on = setInterval(blink, 500);
-    //     function blink() {
-    //         for (let i = 0; i <= computerArray.length; i++) {
-    //             if (i > 0) {
-    //                 computerArray[i - 1].classList.remove("changeColor");
-    //                 }   
-    //             if (i === computerArray.length) {
-    //                 //if the iteration becomes same as the computerArray the blinking ends
-    //                 clearInterval(on);
-    //                 computerPlaying = false; // now it's the player's turn
-    //                 }
-    //             computerArray[i].classList.add("changeColor")
-    //         }
-    //     }   
-
-
 function playerPlays (event) {
-    console.log(event)
     //player clicks to make button change color 
     event.target.classList.add("changeColor");
+    // console.log(event.target)
     setTimeout(function() {
         event.target.classList.remove("changeColor");
     }, 500);
-   
-    // add player's selection to playerArray
-    playerArray.push(event.target);
+    // / add player's selection to playerArray
+    playerArray.push(parseInt(event.target.id));
+    compareArrays()
+    // messageToPlayer.innerHTML = `It's computer's turn.`
+    setTimeout(computerPlays, 3000)
+}
 
-    // check if player's last move was correct
-    if (event.target !== computerArray[playerArray.length - 1]) {
+function computerPlays() {
+    let randomIndex = Math.floor(Math.random() * 4);
+    computerArray.push(randomIndex);
+    console.log(computerArray)
+    for (let i = 0; i < computerArray.length; i++) {
+        setTimeout(function() {
+            buttons[computerArray[i]].classList.add("changeColor")
+            setTimeout(function() {
+                buttons[computerArray[i]].classList.remove("changeColor");
+            }, 300);
+        }, 1000 * i);
+        roundDisplay.innerHTML=i+1
+        messageToPlayer.innerHTML = `Your turn! &#x1F609;`
+    }
+    playerPlays(event);
+}
+
+function playerPlays (event) {
+    //player clicks to make button change color 
+    event.target.classList.add("changeColor");
+    // console.log(event.target)
+    setTimeout(function() {
+        event.target.classList.remove("changeColor");
+    }, 500);
+    // / add player's selection to playerArray
+    playerArray.push(parseInt(event.target.id));
+    compareArrays()
+    // messageToPlayer.innerHTML = `It's computer's turn.`
+    setTimeout(computerPlays, 3000)
+}
+
+
+
+
+function compareArrays() {
+    if (JSON.stringify.playerArray !== JSON.stringify.computerArray) { //https://www.geeksforgeeks.org/how-to-compare-two-arrays-in-javascript/
+        console.log(playerArray)
+        console.log(computerArray)
         lose();
-    } else if (playerArray.length === computerArray.length &&   playerArray.length !== 10) {
-        computerPlays();
+        gameBoard.classList.add("unclickable");
+    } else if (playerArray === computerArray && playerArray.length !== 10) {
+        messageToPlayer.innerHTML= `It's computer's turn.`
+        updateRound();
+        setTimeout(computerPlays, 3000)
     } else if (playerArray.length === 10) {
+        gameBoard.classList.add("unclickable");
         win();
     }
 }
 
 
-// function updateRound () {
-// This should go inside of the PlayerClicks function
+// function updateRound() {
+//     roundDisplay = playerArray.length
 // }
 
 

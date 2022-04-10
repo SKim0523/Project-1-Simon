@@ -11,17 +11,17 @@
 <body>
     <h1>Simon Game</h1>
     <div id="game-status">
-        <p id="game-status-message">Welcome! Please click Start button to play.</p>
+        <p id="game-status-message">Welcome! &#128515;<br>Please click Start button to play.</p>
     </div>
     <button type="button" id="start-button">Start</button>
     <div id="outer-circle">
-        <div id = "upper-left" class="button"></div>
-        <div id = "upper-right" class="button"></div>
-        <div id = "lower-left" class="button"></div>
-        <div id = "lower-right" class="button"></div>
-            <div id = "inner-circle">
-            <p>Round</p>
-            <div id = "round-display">--</div>
+        <div id = "0" class="button upper-left" data-name="green"></div>
+        <div id = "1" class="button upper-right" data-name="red"></div>
+        <div id = "2" class="button lower-left" data-name="yellow"></div>
+        <div id = "3" class="button lower-right" data-name="blue"></div>
+            <div id="inner-circle">
+            <p class="round">Round</p>
+            <div id="round-display">--</div>
             </div>
     </div>
     <div id="instruction">

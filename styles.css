@@ -1,17 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Armata&family=Syncopate:wght@700&display=swap');
+
 body {
     text-align: center;
-}
+    background-color: #f9f9fd;
+    opacity: 1;
+    background-image: radial-gradient(#f75445 0.9500000000000001px, #f9f9fd 0.9500000000000001px);
+    background-size: 19px 19px;
+  }
 
 h1 {
     color:red;
     font-size: 70px;
+    font-weight: bold;
+    font-family: 'Syncopate', sans-serif;
+}
+
+h2 {
+  font-size: 40px;
+  font-family: 'Armata', sans-serif;
+}
+
+#game-status-message {
+  color: darkblue;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'Armata', sans-serif;
+}
+
+#start-button {
+  font-family: 'Syncopate', sans-serif;
+  background-color: red;
+  color:white;
+  border: none;
+  height: 75px; 
+  width: 275px;
+  font-size: 40px;
+  border-radius: 5%;
+  margin-bottom: 20px;
+
 }
 
 /*Creating circle https://www.w3schools.com/howto/howto_css_circles.asp*/
 #outer-circle {
     height: 610px;
     width: 610px;
-    border-style: solid;
     border-width: 5px;
     margin: 30px auto;
     position: relative;
@@ -20,6 +52,7 @@ h1 {
 #inner-circle {
     height: 150px;
     width: 150px;
+    border-radius: 5%;
     background-color: white;
     border-style: solid;
     border-width: 5px;
@@ -28,70 +61,89 @@ h1 {
     margin-left: 225px
 }
 
-  #upper-left {
+  .upper-left{
     height: 300px;
     width: 300px;
+    border-radius: 5%;
     background-color: green;
     border-style: solid;
     border-width: 5px;
     position: absolute;
   }
 
-  #upper-right {
+  .upper-right {
     height: 300px;
     width: 300px;
+    border-radius: 5%;
     background-color: darkred;
     border-style: solid;
     border-width: 5px;
     position: absolute;
-    margin-left: 300px;
+    margin-left: 305px;
   }
 
-  #lower-left {
+  .lower-left {
     height: 300px;
     width: 300px;
-    background-color: gold;
+    border-radius: 5%;
+    background-color: Orange;
     border-style: solid;
     border-width: 5px;
     position: absolute;
-    margin-top: 300px;
+    margin-top: 305px;
   }
 
-  #lower-right {
+  .lower-right {
     height: 300px;
     width: 300px;
+    border-radius: 5%;
     background-color: darkblue;
     border-style: solid;
     border-width: 5px;
     position: absolute;
-    margin-top: 300px;
-    margin-left: 300px
+    margin-top: 305px;
+    margin-left: 305px
   }
 
   #round-display {
-    height: 70px;
+    height: 60px;
     width: 100px;
     color: red;
     font-size: 40px;
     background-color: black;
+    padding-top: 10px;
     margin-left: 25px;
+    font-family: 'Armata', sans-serif;
   }
 
-#game-status-message {
-    font-size: 50px;
-    font-weight: bold;
+
+#instruction {
+  width: 900px;
+  margin: 30px auto;
+  text-align: center;
 }
 
-  #instruction {
-    width: 800px;
-    margin: 30px auto;
-  }
+#instruction-text {
+  color: darkblue;
+  font-size: 30px;
+  font-family: 'Armata', sans-serif;
+}
 
-.button {
-    transition: filter 0.5s;
-    filter: brightness(100%);
+.round {
+  font-family: 'Armata', sans-serif;
+  font-size: 30px;
+  padding-top: 10px;
+  margin: 10px;
 }
 
 .changeColor {
     filter: brightness(250%);
+}
+
+.hidden {
+  display: none;
+}
+
+.unclickable {
+  pointer-events: none;
 }
