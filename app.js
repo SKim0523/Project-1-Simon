@@ -60,7 +60,6 @@ let lowerRight = document.getElementById('3');
 let roundDisplay = document.getElementById('round-display');
 let randomIndex = Math.floor(Math.random() * 4);
 
-
 //*-----Attaching eventListeners---------*/
 startButton.addEventListener ('click', gameStart);
 upperLeft.addEventListener ('click', playerPlays);
@@ -68,36 +67,35 @@ upperRight.addEventListener ('click', playerPlays);
 lowerLeft.addEventListener ('click', playerPlays);
 lowerRight.addEventListener ('click', playerPlays);
 
-
 function gameStart() {
+    // let gameActive = true;
+    // buttons.classList.remove("unclickable");
     messageToPlayer.innerHTML= 'Have fun! &#x1F60E';
-    setTimeout(computerPlays, 2000)
-    // computerPlays();
-}
-
-function accumulateComputerArray(){
-    let nextComputerArray = [...computerArray].push(randomIndex);
-    return nextComputerArray;
+    setTimeout(computerPlays, 1000)
 }
 
 function computerPlays() {
+    // buttons.classList.add("unclickable");
     let randomIndex = Math.floor(Math.random() * 4);
     computerArray.push(randomIndex);
-    console.log(computerArray)
+    // console.log(computerArray)
     for (let i = 0; i < computerArray.length; i++) {
         setTimeout(function() {
             buttons[computerArray[i]].classList.add("changeColor")
             setTimeout(function() {
                 buttons[computerArray[i]].classList.remove("changeColor");
             }, 300);
-        }, 1000 * i);
+        }, 800 * i);
         roundDisplay.innerHTML=i+1
-        messageToPlayer.innerHTML = `Your turn! &#x1F609;`
+        setTimeout(function() {
+            messageToPlayer.innerHTML = `Your turn! &#x1F609;`
+        }, computerArray.length * 800 + 1000);
     }
-    playerPlays(event);
+    playerPlays();
 }
 
 function playerPlays (event) {
+    // buttons.classList.remove("unclickable");
     //player clicks to make button change color 
     event.target.classList.add("changeColor");
     // console.log(event.target)
@@ -105,76 +103,60 @@ function playerPlays (event) {
         event.target.classList.remove("changeColor");
     }, 500);
     // / add player's selection to playerArray
-    playerArray.push(parseInt(event.target.id));
-    compareArrays()
-    // messageToPlayer.innerHTML = `It's computer's turn.`
-    setTimeout(computerPlays, 3000)
-}
-
-function computerPlays() {
-    let randomIndex = Math.floor(Math.random() * 4);
-    computerArray.push(randomIndex);
-    console.log(computerArray)
-    for (let i = 0; i < computerArray.length; i++) {
-        setTimeout(function() {
-            buttons[computerArray[i]].classList.add("changeColor")
-            setTimeout(function() {
-                buttons[computerArray[i]].classList.remove("changeColor");
-            }, 300);
-        }, 1000 * i);
-        roundDisplay.innerHTML=i+1
-        messageToPlayer.innerHTML = `Your turn! &#x1F609;`
-    }
-    playerPlays(event);
-}
-
-function playerPlays (event) {
-    //player clicks to make button change color 
-    event.target.classList.add("changeColor");
-    // console.log(event.target)
+    let nextPlayerArray = [...playerArray].push(parseInt(event.target.id));
+    playerArray = nextPlayerArray
+    compareArrays();
     setTimeout(function() {
-        event.target.classList.remove("changeColor");
-    }, 500);
-    // / add player's selection to playerArray
-    playerArray.push(parseInt(event.target.id));
-    compareArrays()
-    // messageToPlayer.innerHTML = `It's computer's turn.`
-    setTimeout(computerPlays, 3000)
+        messageToPlayer.innerHTML = `Computer's turn &#x1F60C;`
+    }, playerArray.length * 800 + 1000);
+    computerPlays();
 }
 
-
-
+// function playerPlays() {
+//         upperLeft.addEventListener ('click', upperLeft.classList.add("changeColor"));   
+//         setTimeout(function() {
+//             upperLeft.classList.remove("changeColor");
+//         }, 500);
+//         upperRight.addEventListener ('click', upperRight.classList.add("changeColor"))   
+//         setTimeout(function() {
+//             upperRight.classList.remove("changeColor");
+//         }, 500);
+//         lowerLeft.addEventListener ('click', lowerLeft.classList.add("changeColor"));   
+//         setTimeout(function() {
+//             lowerLeft.classList.remove("changeColor");
+//         }, 500);
+//         lowerRight.addEventListener ('click', lowerRight.classList.add("changeColor"));   
+//         setTimeout(function() {
+//             lowerRight.classList.remove("changeColor");
+//         }, 500);
+//     // / add player's selection to playerArray
+//     playerArray.push(parseInt(event.target.id));
+//     compareArrays()
+//     // messageToPlayer.innerHTML = `It's computer's turn.`
+//     setTimeout(computerPlays, 3000)
+    // }
 
 function compareArrays() {
     if (JSON.stringify.playerArray !== JSON.stringify.computerArray) { //https://www.geeksforgeeks.org/how-to-compare-two-arrays-in-javascript/
-        console.log(playerArray)
-        console.log(computerArray)
+        // console.log(playerArray)
+        // console.log(computerArray)
         lose();
-        gameBoard.classList.add("unclickable");
     } else if (playerArray === computerArray && playerArray.length !== 10) {
-        messageToPlayer.innerHTML= `It's computer's turn.`
+        messageToPlayer.innerHTML= `Computer's turn &#x1F60C`
         updateRound();
-        setTimeout(computerPlays, 3000)
+        setTimeout(computerPlays, 1000)
     } else if (playerArray.length === 10) {
-        gameBoard.classList.add("unclickable");
+        buttons.classList.add("unclickable");
         win();
     }
 }
 
-
-// function updateRound() {
-//     roundDisplay = playerArray.length
-// }
-
-
 function win() {
     messageToPlayer.innerHTML= winningMessage;
-    gameActive = false;
+    buttons.classList.add("unclickable");
 }
 
 function lose() {
     messageToPlayer.innerHTML= losingMessage;
-    computerArray = [];
-    playerArray = [];
-    gameActive = false;
+    buttons.classList.add("unclickable");
 }
