@@ -99,7 +99,7 @@ function playerPlays (event) {
         //console.log(computerArray[playerCounter])
         playerCounter++;
         // is the player done with this round? && is in x-th round?
-        if (playerCounter === computerArray.length && computerArray.length === 5) {
+        if (playerCounter === computerArray.length && computerArray.length === 3) {
             win();
         }
         // is the player done with this round?
@@ -108,11 +108,8 @@ function playerPlays (event) {
             messageToPlayer.innerHTML = `Computer's turn &#x1F60C;`;
             setTimeout(computerPlays, 1000);
         }
-        // if (playerCounter === 10) {
-        //     win();
     }   
         else {
-            // incorrect
             lose();
         }
 }
