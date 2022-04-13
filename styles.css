@@ -1,16 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Armata&family=Syncopate:wght@700&display=swap');
 
+/* Reflected some of the button design components done by Mohit Aneja:
+ https://codepen.io/cssjockey/pen/bGbmop?editors=1100 */
+
+
+
 body {
     text-align: center;
+    /*https://www.magicpattern.design/tools/css-backgrounds*/
     background-color: #f9f9fd;
     opacity: 1;
-    background-image: radial-gradient(#f75445 0.9500000000000001px, #f9f9fd 0.9500000000000001px);
-    background-size: 19px 19px;
+    background-image: radial-gradient(#f79b45 2px, #f9f9fd 2px);
+    background-size: 40px 40px;
   }
 /* Title */
 h1 {
     color:red;
-    font-size: 80px;
+    font-size: 70px;
     font-weight: bold;
     font-family: 'Syncopate', sans-serif;
 }
@@ -23,28 +29,26 @@ h2 {
 
 #game-status-message {
   color: darkblue;
-  font-size: 50px;
-  font-weight: bold;
+  font-size: 40px;
   font-family: 'Armata', sans-serif;
-  height: 1.5em;
+  font-weight: bold;
+  height: 3.5rem;
   overflow: visible;
+  text-shadow: 1px 1px 0 darkblue;
 }
 
-/* Start button */
-/* Referred to button design done by Mohit Aneja:
- https://codepen.io/cssjockey/pen/bGbmop?editors=1100 */
 
 #start-button {
   width: 275px;
   height: 75px;
-  font-size: 30px;  
+  font-size: 35px;  
   font-family: 'Syncopate', sans-serif;
-  background: red;
+  background: #CC0000;
   color: white;
-  border: 1px solid darkred;
+  border: 3px solid darkred;
   border-radius: 5px;
-  box-shadow: 0px 5px 0px darkred;
-  text-shadow: 1px 1px 1px darkred;
+  box-shadow: 1px 5px 0px #470000;
+  text-shadow: 1px 1px 1px #470000;
   margin-top: 20px;
 }
 
@@ -57,72 +61,102 @@ h2 {
 
 /* Gaming section */
 #outer-box {
-    height: 610px;
-    width: 610px;
+    height: 530px;
+    width: 530px;
     border-width: 5px;
+    margin-top: 5px;
     margin: 30px auto;
-    position: relative;
 }
   
 #inner-box {
     height: 150px;
     width: 150px;
     border-radius: 5%;
-    background-color: white;
+    background-color: lightgrey;
     border-style: solid;
     border-width: 5px;
-    position: absolute;
-    margin-top: 225px;
-    margin-left: 225px
+    margin: auto;
 }
 
-.button {
-    transition: filter 0.5s;
+.upper-left {
+    position: relative;
+    height: 250px;
+    width: 250px;
+    border-radius: 5%;
+    background-color: #006400;
+    border: 1px solid #003300;
+    box-shadow: 3px 7px #003300;
+    border-style: solid;
+    border-width: 5px;
+    margin-right: 20px;
 }
 
-.upper-left{
-  height: 300px;
-  width: 300px;
-  border-radius: 5%;
-  background-color: green;
-  border-style: solid;
-  border-width: 5px;
-  position: absolute;
-}
+.upper-left:active {  
+    position: relative;
+    top: 10px;
+    box-shadow: none !important;
+    transition: all 250ms ease;
+  }
 
 .upper-right {
-  height: 300px;
-  width: 300px;
+  position: relative;
+  height: 250px;
+  width: 250px;
   border-radius: 5%;
-  background-color: darkred;
+  background-color: #8B0000;
+  border: 1px solid #470000;
+  box-shadow: 3px 7px #470000;
   border-style: solid;
   border-width: 5px;
-  position: absolute;
-  margin-left: 305px;
 }
+
+.upper-right:active {  
+    position: relative;
+    top: 10px;
+    box-shadow: none !important;
+    transition: all 250ms ease;
+  }
 
 .lower-left {
-  height: 300px;
-  width: 300px;
-  border-radius: 5%;
-  background-color: Orange;
-  border-style: solid;
-  border-width: 5px;
-  position: absolute;
-  margin-top: 305px;
+    position: relative;
+    height: 250px;
+    width: 250px;
+    border-radius: 5%;
+    background-color: #FFA500;
+    border: 1px solid #825500;
+    box-shadow: 3px 7px #825500;
+    border-style: solid;
+    border-width: 5px;
+    margin-right: 20px;
+    margin-top: 25px;
 }
 
+.lower-left:active {  
+    position: relative;
+    top: 5px;
+    box-shadow: none !important;
+    transition: all 250ms ease;
+  }
+
 .lower-right {
-  height: 300px;
-  width: 300px;
-  border-radius: 5%;
-  background-color: darkblue;
-  border-style: solid;
-  border-width: 5px;
-  position: absolute;
-  margin-top: 305px;
-  margin-left: 305px
+    position: relative;
+    height: 250px;
+    width: 250px;
+    border-radius: 5%;
+    background-color: #00008B;
+    border: 1px solid #000013;
+    box-shadow: 3px 7px #000013;
+    border-style: solid;
+    border-width: 5px;
+    margin-top: 25px;
 }
+
+.lower-right:active {  
+    position: relative;
+    top: 5px;
+    box-shadow: none !important;
+    transition: all 250ms ease;
+  }
 
 #round-display {
   height: 60px;
@@ -139,24 +173,27 @@ h2 {
   font-size: 30px;
   padding-top: 10px;
   margin: 10px;
+  text-shadow: 1px 1px 0 black;
 }
 
 /* Instruction section */
 #instruction {
+  font-size: 60px;
   width: 900px;
-  margin: 30px auto;
+  margin: 10px auto;
   text-align: center;
+  text-shadow: 1px 1px 0 black;
 }
 
 #instruction-text {
   color: darkblue;
-  font-size: 30px;
+  font-size: 35px;
   font-family: 'Armata', sans-serif;
 }
 
 /* classList */
 .changeColor {
-    filter: brightness(350%);
+    filter: brightness(200%);
 }
 
 .hidden {

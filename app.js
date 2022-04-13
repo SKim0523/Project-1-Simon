@@ -57,6 +57,13 @@ let upperRight = document.getElementById('1');
 let lowerLeft = document.getElementById('2');
 let lowerRight = document.getElementById('3');
 let roundDisplay = document.getElementById('round-display');
+let sound0 = document.getElementById('sound0')
+let sound1 = document.getElementById('sound1')
+let sound2 = document.getElementById('sound2')
+let sound3 = document.getElementById('sound3')
+let winSound = document.getElementById('win')
+let loseSound = document.getElementById('lose')
+
 
 //*-----Attaching eventListeners---------*/
 startButton.addEventListener ('click', gameStart);
@@ -68,35 +75,78 @@ lowerRight.addEventListener ('click', playerPlays);
 function gameStart() {
     messageToPlayer.innerHTML= 'Have fun! &#x1F60E';
     setTimeout(computerPlays, 1000)
-    startButton.classList.add("unclickable");
+    startButton.classList.add("unclickable"); 
 }
 
 function computerPlays() {
+    unclickable();
     let randomIndex = Math.floor(Math.random() * 4);
     computerArray.push(buttons[randomIndex]);
     // console.log(computerArray);
     for (let i = 0; i < computerArray.length; i++) {
         setTimeout(function() {
             computerArray[i].classList.add("changeColor")
+            console.log(computerArray[i])
+                if (computerArray[i] === upperLeft) {
+                    sound0.play();
+                } else if (computerArray[i] === upperRight) {
+                    sound1.play();
+                } else if (computerArray[i] === lowerLeft) {
+                    sound2.play();
+                } else if (computerArray[i] === lowerRight) {
+                    sound0.play();
+                }
             setTimeout(function() {
                 computerArray[i].classList.remove("changeColor");
             }, 300);
         }, 800 * i);
         roundDisplay.innerHTML=i+1
     }
+    clickable();
     setTimeout(function() {
         messageToPlayer.innerHTML = `Your turn! &#x1F609;`
     }, (computerArray.length - 1) * 800 + 500);
 }
+
+// function tonePicker() {
+//     let sound0 = document.getElementById('sound0')
+//     let sound1 = document.getElementById('sound1')
+//     let sound2 = document.getElementById('sound2')
+//     let sound3 = document.getElementById('sound3')
+//     if (computerArray[i] === upperLeft) {
+//         sound0.play();
+//     } else if (computerArray[i] === upperRight) {
+//         sound1.play();
+//     } else if (computerArray[i] === lowerLeft) {
+//         sound2.play();
+//     } else if (computerArray[i] === lowerRight) {
+//         sound3.play();
+//     }
+// }
+// let audio = new Audio (),
+// let playlist = new Array ('soun0.wav', 'soun1.wav', 'soun2.wav', 'soun3.mp3')
+// audio.addEventListene
+
 
 function playerPlays (event) {
     event.target.classList.add("changeColor")
     setTimeout(function() {
         event.target.classList.remove("changeColor");
     }, 300);
+    if (event.target === upperLeft) {
+        sound0.play();
+    } else if (event.target === upperRight) {
+        sound1.play();
+    } else if (event.target === lowerLeft) {
+        sound2.play();
+    } else if (event.target === lowerRight) {
+        sound0.play();
+    }
     // did player click on the correct color?
     if (computerArray[playerCounter] === event.target) {
-        //console.log(computerArray[playerCounter])
+        // console.log(computerArray);
+        // console.log(event.target)
+        // console.log(computerArray[playerCounter])
         playerCounter++;
         // is the player done with this round? && is in x-th round?
         if (playerCounter === computerArray.length && computerArray.length === 3) {
@@ -114,12 +164,26 @@ function playerPlays (event) {
         }
 }
 
+function unclickable() {
+    for (let element of buttons) {
+        element.classList.add("unclickable");
+    }
+}
+
+function clickable() {
+    for (let element of buttons) {
+        element.classList.remove("unclickable");
+    }
+}
+
 function win() {
     messageToPlayer.innerHTML= winningMessage;
-    outerBox.classList.add("unclickable");
+    winSound.play();
+    unclickable();
 }
 
 function lose() {
     messageToPlayer.innerHTML = losingMessage;
-    outerBox.classList.add("unclickable");
+    loseSound.play();
+    unclickable();
 }

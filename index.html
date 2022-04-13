@@ -1,3 +1,4 @@
+<!-- Sound source >> https://freesound.org/people/muel2002/sounds/266964/-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,25 +14,28 @@
     <div id="game-status">
         <p id="game-status-message">Welcome! &#128515;<br>Please click Start button to play.</p>
     </div>
+    <div>
     <button type="button" id="start-button">Start</button>
+    </div>
     <div id="outer-box">
-        <div id="0" class="button upper-left" data-name="green">
-        </div>
-        <div id="1" class="button upper-right" data-name="red">
-        </div>
-        <div id="2" class="button lower-left" data-name="yellow">
-        </div>
-        <div id="3" class="button lower-right" data-name="blue">
-        </div>
-            <div id="inner-box">
-            <p class="round">Round</p>
-            <div id="round-display">--</div>
-            </div>
+        <button id="0" class="button upper-left" data-name="green"></button>  
+        <button id="1" class="button upper-right" data-name="red"> </button> 
+        <button id="2" class="button lower-left" data-name="yellow"></button>
+        <button id="3" class="button lower-right" data-name="blue"></button>
+    </div>
+    <div id="inner-box">
+        <p class="round">Round</p>
+        <div id="round-display">--</div>
     </div>
     <div id="instruction">
         <h2>Instruction:</h2>
-        <p id="instruction-text">Replicate the sequence the game board produces. The sequence grows longer by 1 button click each round! You win if you reach the 10th round.</p>
+        <p id="instruction-text">Replicate the sequence the game board produces. The sequence grows longer each round! You win if you reach the 10th round.</p>
     </div>
 
+    <audio id="sound0"><source src="./audio/sound0.wav" type="audio/wav"></audio>
+    <audio id="sound1"><source src="./audio/sound1.wav" type="audio/wav"></audio>
+    <audio id="sound2"><source src="./audio/sound2.wav" type="audio/wav"></audio>
+    <audio id="win"><source src="./audio/win.wav" type="audio/wav"></audio>
+    <audio id="lose"><source src="./audio/lose.wav" type="audio/wav"></audio>
 </body>
 </html>
