@@ -3,197 +3,195 @@
 /* Reflected some of the button design components done by Mohit Aneja:
  https://codepen.io/cssjockey/pen/bGbmop?editors=1100 */
 
-
-
 body {
-    text-align: center;
-    /*https://www.magicpattern.design/tools/css-backgrounds*/
-    background-color: #f9f9fd;
-    opacity: 1;
-    background-image: radial-gradient(#f79b45 2px, #f9f9fd 2px);
-    background-size: 40px 40px;
-  }
-/* Title */
-h1 {
-    color:red;
-    font-size: 70px;
-    font-weight: bold;
-    font-family: 'Syncopate', sans-serif;
+  /*https://www.magicpattern.design/tools/css-backgrounds (line 11-14)*/
+  background-color: #f9f9fd;
+  background-image: radial-gradient(#f79b45 2px, #f9f9fd 2px);
+  background-size: 40px 40px;
+  opacity: 1;
+  text-align: center;
 }
 
-/* Message */
-h2 {
-  font-size: 40px;
-  font-family: 'Armata', sans-serif;
+  /* Title */
+h1 {
+    color:red;
+    font-family: 'Syncopate', sans-serif;
+    font-size: 70px;
+    font-weight: bold;
 }
 
 #game-status-message {
   color: darkblue;
-  font-size: 40px;
   font-family: 'Armata', sans-serif;
+  font-size: 40px;
   font-weight: bold;
-  height: 3.5rem;
-  overflow: visible;
+  height: 5rem;
   text-shadow: 1px 1px 0 darkblue;
 }
 
-
 #start-button {
-  width: 275px;
-  height: 75px;
-  font-size: 35px;  
-  font-family: 'Syncopate', sans-serif;
   background: #CC0000;
-  color: white;
   border: 3px solid darkred;
   border-radius: 5px;
   box-shadow: 1px 5px 0px #470000;
-  text-shadow: 1px 1px 1px #470000;
+  color: white;
+  font-family: 'Syncopate', sans-serif;
+  font-size: 35px;  
+  height: 75px;
+  width: 275px;
   margin-top: 20px;
+  text-shadow: 1px 1px 1px #470000;
 }
 
 #start-button:active {  
+  box-shadow: none !important;
   position: relative;
   top: 5px;
-  box-shadow: none !important;
   transition: all 250ms ease;
 }
 
 /* Gaming section */
 #outer-box {
-    height: 530px;
-    width: 530px;
-    border-width: 5px;
-    margin-top: 5px;
-    margin: 30px auto;
-}
-  
-#inner-box {
-    height: 150px;
-    width: 150px;
-    border-radius: 5%;
-    background-color: lightgrey;
-    border-style: solid;
-    border-width: 5px;
-    margin: auto;
+  border-width: 5px;
+  height: 530px;
+  width: 530px;
+  margin: 30px auto;
+  margin-top: 5px;
 }
 
 .upper-left {
-    position: relative;
-    height: 250px;
-    width: 250px;
-    border-radius: 5%;
-    background-color: #006400;
-    border: 1px solid #003300;
-    box-shadow: 3px 7px #003300;
-    border-style: solid;
-    border-width: 5px;
-    margin-right: 20px;
+  background-color: #006400;
+  border: 1px solid #003300;
+  border-radius: 5%;
+  border-style: solid;
+  border-width: 5px;
+  box-shadow: 3px 7px #003300;
+  height: 250px;
+  width: 250px;
+  margin-right: 20px;
+  margin-top: 20px;
+  position: relative;
 }
 
 .upper-left:active {  
-    position: relative;
-    top: 10px;
-    box-shadow: none !important;
-    transition: all 250ms ease;
+  box-shadow: none !important;
+  position: relative;
+  top: 10px;
+  transition: all 250ms ease;
   }
 
 .upper-right {
-  position: relative;
-  height: 250px;
-  width: 250px;
-  border-radius: 5%;
   background-color: #8B0000;
   border: 1px solid #470000;
-  box-shadow: 3px 7px #470000;
+  border-radius: 5%;
   border-style: solid;
   border-width: 5px;
+  box-shadow: 3px 7px #470000;
+  height: 250px;
+  width: 250px;
+  position: relative;
 }
 
 .upper-right:active {  
-    position: relative;
-    top: 10px;
-    box-shadow: none !important;
-    transition: all 250ms ease;
-  }
+  box-shadow: none !important;
+  position: relative;
+  top: 10px;
+  transition: all 250ms ease;
+}
 
 .lower-left {
-    position: relative;
-    height: 250px;
-    width: 250px;
-    border-radius: 5%;
-    background-color: #FFA500;
-    border: 1px solid #825500;
-    box-shadow: 3px 7px #825500;
-    border-style: solid;
-    border-width: 5px;
-    margin-right: 20px;
-    margin-top: 25px;
+  background-color: #FFA500;
+  border: 1px solid #825500;
+  border-radius: 5%;
+  border-style: solid;
+  border-width: 5px;
+  box-shadow: 3px 7px #825500;
+  height: 250px;
+  width: 250px;
+  margin-right: 20px;
+  margin-bottom: 25px;
+  position: relative;
 }
 
 .lower-left:active {  
-    position: relative;
-    top: 5px;
-    box-shadow: none !important;
-    transition: all 250ms ease;
-  }
+  box-shadow: none !important;
+  position: relative;
+  top: 5px;
+  transition: all 250ms ease;
+}
 
 .lower-right {
-    position: relative;
-    height: 250px;
-    width: 250px;
-    border-radius: 5%;
-    background-color: #00008B;
-    border: 1px solid #000013;
-    box-shadow: 3px 7px #000013;
-    border-style: solid;
-    border-width: 5px;
-    margin-top: 25px;
+  background-color: #00008B;
+  border-radius: 5%;
+  border-style: solid;
+  border-width: 5px;
+  border: 1px solid #000013;
+  box-shadow: 3px 7px #000013;
+  height: 250px;
+  width: 250px;
+  margin-top: 25px;
+  position: relative;
 }
 
-.lower-right:active {  
-    position: relative;
-    top: 5px;
-    box-shadow: none !important;
-    transition: all 250ms ease;
-  }
-
-#round-display {
-  height: 60px;
-  width: 100px;
-  color: red;
-  font-size: 40px;
-  background-color: black;
-  padding-top: 10px;
-  margin-left: 25px;
-  font-family: 'Armata', sans-serif;
+.lower-right:active {
+  box-shadow: none !important;
+  position: relative;
+  top: 5px;
+  transition: all 250ms ease;
 }
+
+#inner-box {
+  background-color: lightgrey;
+  border-radius: 5%;
+  border-style: solid;
+  border-width: 5px;
+  height: 150px;
+  width: 150px;
+  margin: 50px auto;
+}
+
 .round {
   font-family: 'Armata', sans-serif;
-  font-size: 30px;
+  font-size: 35px;
   padding-top: 10px;
   margin: 10px;
   text-shadow: 1px 1px 0 black;
 }
 
+#round-display {
+  background-color: black;
+  color: red;
+  font-family: 'Armata', sans-serif;
+  font-size: 40px;
+  height: 60px;
+  width: 100px;
+  margin-left: 25px;
+  padding-top: 10px;
+}
+
 /* Instruction section */
 #instruction {
-  font-size: 60px;
-  width: 900px;
-  margin: 10px auto;
+  font-family: 'Armata', sans-serif;
+  font-size: 30px;
+  margin: 0px auto;
   text-align: center;
   text-shadow: 1px 1px 0 black;
+  width: 900px;
 }
 
 #instruction-text {
   color: darkblue;
-  font-size: 35px;
   font-family: 'Armata', sans-serif;
+  font-size: 35px;
 }
 
 /* classList */
 .changeColor {
     filter: brightness(200%);
+}
+
+.dim {
+  filter: saturate(25%);
 }
 
 .hidden {

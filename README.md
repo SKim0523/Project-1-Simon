@@ -47,13 +47,14 @@ Simon Game is a browser based interactive  memory game.
 - A user can see game sequences expressed in four different colors.(Colors will be highlighted when selected.)
 - A user can use a mouse to click the buttons to replicate sequences.(Colors will be highlighted when selected.)
 - A user can see the game round and game status information that gets updated according to the game play.
-- A user will hear sounds that are associated to buttons as he/she clicks.
-- A user will hear sounds that are associated to win/lose.
+- A user will hear sounds that are associated with buttons.
+- A user will hear sounds that are associated with win/lose.
 
 ## **Unsolved Problems and Challenges**
+1. Sound: I wasn't able to edit/crop the sound length. Because of this, a sound will not play more than first time if the same button is selected consecutively.
+2. Reset: The player needs to refresh the page to start the game all over.
 
 ## ** Next Steps**
-I would like to enhance the game with the following added features:
-- A timer displays time elapse for a given round and resets when a new round starts.
+On top of resolving the above mentioned problems, I would like to enhance the game with the following added features:
 - A player loses if he/she takes more than 10 seconds to replicate the sequence.
-- Once the Start button is clicked, the four buttons of the game board will  take color in order with an associated tone: (clockwise order) Red >> Blue >> Yellow >> Green
+- Once the Start button is clicked, the four buttons of the game board will blink once in order and make associated sounds: (clockwise order) Red >> Blue >> Yellow >> Green

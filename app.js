@@ -45,7 +45,7 @@ let computerArray = [];
 let playerCounter = 0;
 let round = 0;
 let winningMessage = `You win! What a great memory! &#128525`;
-let losingMessage = `Game over! &#128565; Please try again.`;
+let losingMessage = `Game over! &#128565; Refresh the page to start again.`;
 
 //*-----Selectors--------*/
 let startButton = document.getElementById('start-button');
@@ -79,7 +79,7 @@ function gameStart() {
 }
 
 function computerPlays() {
-    unclickable();
+    deactivate();
     let randomIndex = Math.floor(Math.random() * 4);
     computerArray.push(buttons[randomIndex]);
     // console.log(computerArray);
@@ -102,31 +102,11 @@ function computerPlays() {
         }, 800 * i);
         roundDisplay.innerHTML=i+1
     }
-    clickable();
     setTimeout(function() {
         messageToPlayer.innerHTML = `Your turn! &#x1F609;`
+        activate(); 
     }, (computerArray.length - 1) * 800 + 500);
 }
-
-// function tonePicker() {
-//     let sound0 = document.getElementById('sound0')
-//     let sound1 = document.getElementById('sound1')
-//     let sound2 = document.getElementById('sound2')
-//     let sound3 = document.getElementById('sound3')
-//     if (computerArray[i] === upperLeft) {
-//         sound0.play();
-//     } else if (computerArray[i] === upperRight) {
-//         sound1.play();
-//     } else if (computerArray[i] === lowerLeft) {
-//         sound2.play();
-//     } else if (computerArray[i] === lowerRight) {
-//         sound3.play();
-//     }
-// }
-// let audio = new Audio (),
-// let playlist = new Array ('soun0.wav', 'soun1.wav', 'soun2.wav', 'soun3.mp3')
-// audio.addEventListene
-
 
 function playerPlays (event) {
     event.target.classList.add("changeColor")
@@ -164,26 +144,46 @@ function playerPlays (event) {
         }
 }
 
-function unclickable() {
+function deactivate() {
     for (let element of buttons) {
         element.classList.add("unclickable");
     }
 }
 
-function clickable() {
+function activate() {
     for (let element of buttons) {
         element.classList.remove("unclickable");
     }
 }
 
+function greyOut() {
+    for (let element of buttons) {
+        element.classList.add("dim");
+    }
+}
+
+function removeGreyOut() {
+    for (let element of buttons) {
+        element.classList.remove("dim");
+    }
+}
+
+function lightUp() {
+    for (let element of buttons) {
+        element.classList.add("changeColor");
+    }
+}
+
 function win() {
-    messageToPlayer.innerHTML= winningMessage;
+    messageToPlayer.innerHTML = winningMessage;
     winSound.play();
-    unclickable();
+    deactivate();
+    lightUp();
 }
 
 function lose() {
     messageToPlayer.innerHTML = losingMessage;
     loseSound.play();
-    unclickable();
+    deactivate();
+    greyOut();
 }
