@@ -86,7 +86,7 @@ function computerPlays() {
     for (let i = 0; i < computerArray.length; i++) {
         setTimeout(function() {
             computerArray[i].classList.add("changeColor")
-            console.log(computerArray[i])
+            // console.log(computerArray[i])
                 if (computerArray[i] === upperLeft) {
                     sound0.play();
                 } else if (computerArray[i] === upperRight) {
@@ -129,7 +129,7 @@ function playerPlays (event) {
         // console.log(computerArray[playerCounter])
         playerCounter++;
         // is the player done with this round? && is in x-th round?
-        if (playerCounter === computerArray.length && computerArray.length === 3) {
+        if (playerCounter === computerArray.length && computerArray.length === 10) {
             win();
         }
         // is the player done with this round?

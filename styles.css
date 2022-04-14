@@ -194,9 +194,9 @@ h1 {
   filter: saturate(25%);
 }
 
-.hidden {
+/* .hidden {
     display: none;
-}
+} */
 
 .unclickable {
     pointer-events: none;
