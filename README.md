@@ -1,4 +1,5 @@
 # Simon Game
+ https://skim0523.github.io/Project-1-Simon/
 ## **Game Description**
 Simon Game is a browser based interactive  memory game.  
 - User Interface : The game is played on a game board with four clickable buttons. Each of the button can light up at a click. 
